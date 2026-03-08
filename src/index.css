@@ -1,0 +1,260 @@
+:root {
+  --bg: #f3f6ff;
+  --surface: #ffffff;
+  --ink: #1f2a44;
+  --muted: #62708a;
+  --line: #e2e8f5;
+  --state: #e84a5f;
+  --props: #2563eb;
+  --mixed: #0f766e;
+  --danger: #b42318;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--ink);
+  background: radial-gradient(circle at top, #ffffff 10%, var(--bg) 75%);
+}
+
+.app {
+  width: min(1100px, calc(100% - 32px));
+  margin: 32px auto;
+  display: grid;
+  gap: 20px;
+}
+
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 10px 30px rgb(20 33 61 / 8%);
+}
+
+.hero h1 {
+  margin: 10px 0 8px;
+}
+
+.hero p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.chip {
+  display: inline-block;
+  background: #e9efff;
+  color: #1d4ed8;
+  border-radius: 999px;
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.panel-head,
+.card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.panel-head h2,
+.card-head h3 {
+  margin: 0;
+}
+
+.controls-grid {
+  margin-top: 14px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.card {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 14px;
+  background: #fcfdff;
+}
+
+.card p {
+  margin: 8px 0;
+  color: var(--muted);
+}
+
+.tag {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  padding: 5px 10px;
+  color: #fff;
+}
+
+.tag.state {
+  background: var(--state);
+}
+
+.tag.props {
+  background: var(--props);
+}
+
+.tag.mixed {
+  background: var(--mixed);
+}
+
+.form {
+  margin-top: 14px;
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: end;
+}
+
+.form label {
+  display: grid;
+  gap: 6px;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.form input[type='text'],
+.form input[type='number'] {
+  border: 1px solid #c7d1eb;
+  border-radius: 8px;
+  padding: 9px 10px;
+  font-size: 1rem;
+}
+
+.checkbox-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--ink);
+}
+
+.form button {
+  border: none;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-weight: 700;
+  background: #111827;
+  color: #fff;
+  cursor: pointer;
+}
+
+.error {
+  min-height: 20px;
+  margin: 8px 0 0;
+  color: var(--danger);
+  font-weight: 600;
+}
+
+.students-list {
+  margin-top: 14px;
+  display: grid;
+  gap: 10px;
+}
+
+.student-card {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+}
+
+.student-card.selected {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgb(37 99 235 / 15%);
+}
+
+.student-main {
+  border: none;
+  background: transparent;
+  text-align: left;
+  display: grid;
+  gap: 4px;
+  cursor: pointer;
+  padding: 0;
+}
+
+.student-name {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.student-meta {
+  color: var(--muted);
+}
+
+.badge {
+  display: inline-block;
+  width: fit-content;
+  border-radius: 999px;
+  padding: 3px 9px;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.badge.present {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.badge.absent {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.student-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.student-actions button {
+  border: 1px solid #c8d2ee;
+  border-radius: 8px;
+  background: #f8faff;
+  color: var(--ink);
+  padding: 7px 10px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.empty,
+.muted {
+  color: var(--muted);
+}
+
+.filter-toggle {
+  margin-top: 12px;
+}
+
+@media (max-width: 900px) {
+  .controls-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form {
+    grid-template-columns: 1fr;
+  }
+
+  .student-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
