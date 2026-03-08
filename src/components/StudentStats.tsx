@@ -11,9 +11,10 @@ type StudentStatsProps={
     setIsPresentChecked: (checked: boolean) => void;
     isPresentChecked: boolean;
     // setIsPresentChecked: React.Dispatch<React.SetStateAction<boolean>>;
+    currentStud: StudentItem | null;
 }
 
-function StudentStats({totalStudNum, isPresentChecked, setIsPresentChecked}: StudentStatsProps){
+function StudentStats({totalStudNum, isPresentChecked, setIsPresentChecked, currentStud}: StudentStatsProps){
 
     const [presentStudNum, setPresentStudNum] = useState(0);
     const [medieNote, setMedieNote] = useState(0);
@@ -63,21 +64,21 @@ function StudentStats({totalStudNum, isPresentChecked, setIsPresentChecked}: Stu
               </p>
             </article>
 
-            {/* <article className="card" id="selected-student">
+            <article className="card" id="selected-student">
               <div className="card-head">
                 <h3>Selected Student</h3>
                 <span className="tag state">STATE</span>
               </div>
               <p>
-                Nume: <strong></strong>
+                Nume: <strong>{currentStud?.nume}</strong>
               </p>
               <p>
-                Nota: <strong></strong>
+                Nota: <strong>{currentStud?.nota}</strong>
               </p>
               <p>
-                Status: <strong></strong>
+                Status: <strong>{currentStud?.status ? "prezent" : "absent"}</strong>
               </p>
-            </article> */}
+            </article>
 
             <article className="card" id="presence-filter">
               <div className="card-head">

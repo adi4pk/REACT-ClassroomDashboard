@@ -74,11 +74,40 @@ function App() {
     setStudentList(newArr);
   }
 
+  // function increaseGrade (student: StudentItem){
+
+  //   setStudentList(prevList =>{
+  //     const newArr = studentList.map(item => item.id === student.id ? {...item, nota: student.nota+1} : item);
+  //     console.log("Test")
+  //     return newArr;
+  //   })
+  //   // console.log("test increase")
+  // }
+
+  function increaseGrade(student: StudentItem){
+
+    if(student.nota < 10){
+      let newArr = studentList.map(item => item.id === student.id ? {...item, nota: student.nota+1}: item);
+      setStudentList(newArr);
+    }
+    
+  }
+
+
+  function decreaseGrade(student: StudentItem){
+
+    if(student.nota > 1){
+      let newArr = studentList.map(item => item.id === student.id ? {...item, nota: student.nota-1}: item)
+      setStudentList(newArr);
+    }
+    
+  }
+
   return (
     <>
     <main className="app" id="app">
       <header className="hero panel">
-        <p className="chip">Vanilla JS</p>
+        <p className="chip">REACT JS</p>
         <h1>Classroom Dashboard</h1>
         <p>Demonstratie practica pentru state in parinte si props transmise catre copii.</p>
       </header>
@@ -89,12 +118,14 @@ function App() {
     // showOnlyPresentStudents={showOnlyPresentStudents}
     isPresentChecked={isPresentChecked}
     setIsPresentChecked={setIsPresentChecked}
+    currentStud={selectedStud}
     />
 
 
     <AddStudentForm
     addNewStudent={addNewStudent}
-    studentList={studentList}/>
+    studentList={studentList}
+    />
 
       <section className="panel" aria-label="Lista elevi">
         <div className="panel-head">
@@ -106,12 +137,18 @@ function App() {
             <Student 
             key={element.id}
               student={element} //!!!send props to CHILD component
-              togglePrezenta={togglePrezentaStudent}/>  
+              togglePrezenta={togglePrezentaStudent}
+              setSelectedStud={setSelectedStud}
+              handleIncreaseGrade={increaseGrade}
+              handleDecreaseGrade={decreaseGrade}/>  
           ))) : (studentList.map((element) => (
             <Student 
             key={element.id}
               student={element} //!!!send props to CHILD component
-              togglePrezenta={togglePrezentaStudent}/>  
+              togglePrezenta={togglePrezentaStudent}
+              setSelectedStud={setSelectedStud}
+              handleIncreaseGrade={increaseGrade}
+              handleDecreaseGrade={decreaseGrade}/>  
           ))
           )
         }

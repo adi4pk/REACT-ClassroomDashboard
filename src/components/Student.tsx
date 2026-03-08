@@ -4,16 +4,20 @@ import type { StudentItem } from "../models/StudentItem";
 type StudentProps={
     student: StudentItem;
     togglePrezenta: (student: StudentItem) => void;
+    setSelectedStud: (student: StudentItem) => void;
+    handleIncreaseGrade: (student: StudentItem) => void;
+    handleDecreaseGrade: (student: StudentItem) => void;
 }
 
 
-function Student({student, togglePrezenta}: StudentProps){
+function Student({student, togglePrezenta, setSelectedStud, handleIncreaseGrade, handleDecreaseGrade}: StudentProps){
 
     return (
       <>
         <article
           className="student-card ${props.isSelected ? 'selected' : ''}"
           data-id="${props.id}"
+          onClick={() => setSelectedStud(student)}
         >
           <button
             className="student-main"
@@ -28,10 +32,17 @@ function Student({student, togglePrezenta}: StudentProps){
             </span>
           </button>
           <div className="student-actions">
-            <button type="button" data-action="decrease" data-id="${props.id}">
+            <button type="button" data-action="decrease" data-id="${props.id}"
+            onClick={(event) => {
+                event.stopPropagation();
+                handleDecreaseGrade(student)}
+                }>
               -
             </button>
-            <button type="button" data-action="increase" data-id="${props.id}">
+            <button type="button" data-action="increase" data-id="${props.id}"
+            onClick={(event) => {
+                event.stopPropagation();
+                handleIncreaseGrade(student)}}>       {/*//pay ATTENTION to the parameter!!!!!!*/}
               +
             </button>
             <button
