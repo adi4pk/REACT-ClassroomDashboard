@@ -12,31 +12,11 @@ type StudentStatsProps={
     isPresentChecked: boolean;
     // setIsPresentChecked: React.Dispatch<React.SetStateAction<boolean>>;
     currentStud: StudentItem | null;
+    presentStudNum: number;
+    medieNote: number;
 }
 
-function StudentStats({totalStudNum, isPresentChecked, setIsPresentChecked, currentStud}: StudentStatsProps){
-
-    const [presentStudNum, setPresentStudNum] = useState(0);
-    const [medieNote, setMedieNote] = useState(0);
-    
-  useEffect(() => {
-
-    let count = 0;      //must be outside the LOOP
-    for(let i=0; i<totalStudNum.length; i++){
-        // console.log("Test")
-        if(totalStudNum[i].status === true){
-          count += 1;
-          console.log("hello")
-        }
-      }
-    setPresentStudNum(count);
-
-      let totalNote = 0;
-      for(let i=0; i<totalStudNum.length; i++){
-        totalNote += totalStudNum[i].nota; 
-      }
-    setMedieNote(totalNote/totalStudNum.length);
-  }, [totalStudNum])
+function StudentStats({totalStudNum, isPresentChecked, setIsPresentChecked, currentStud, presentStudNum, medieNote}: StudentStatsProps){
 
     // loadPresentStudNum();
 
